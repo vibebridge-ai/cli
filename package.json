@@ -1,0 +1,42 @@
+{
+  "name": "vibebridge",
+  "version": "0.1.0",
+  "description": "The official VibeBridge CLI. Push a finished, AI-built HTML site live on VibeBridge and make every text and image editable by the owner.",
+  "type": "module",
+  "bin": {
+    "vibebridge": "bin/vibebridge.mjs",
+    "vbb": "bin/vibebridge.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "files": [
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://vibebridge.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibebridge-ai/cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vibebridge-ai/cli/issues"
+  },
+  "author": "Kompass Consulting GmbH",
+  "keywords": [
+    "vibebridge",
+    "cms",
+    "deploy",
+    "ai",
+    "claude",
+    "cursor",
+    "static-site",
+    "publish",
+    "website"
+  ],
+  "scripts": {
+    "test": "node bin/vibebridge.mjs --version"
+  }
+}

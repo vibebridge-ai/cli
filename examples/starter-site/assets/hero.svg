@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Placeholder hero image">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e07a4f"/>
+      <stop offset="1" stop-color="#d9663c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <g fill="none" stroke="#fafafa" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+    <path d="M470 330 h210 a20 20 0 0 1 20 20 v120 a90 90 0 0 1 -90 90 h-70 a90 90 0 0 1 -90 -90 v-120 a20 20 0 0 1 20 -20 z"/>
+    <path d="M700 360 h40 a50 50 0 0 1 0 100 h-40"/>
+    <path d="M520 270 c0 -28 30 -28 30 -56" />
+    <path d="M580 270 c0 -28 30 -28 30 -56" />
+  </g>
+  <text x="600" y="650" fill="#fafafa" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="34" font-weight="600" text-anchor="middle" opacity="0.95">Replace with your own image</text>
+</svg>

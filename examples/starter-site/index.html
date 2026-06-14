@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northbeam Coffee</title>
+  <meta name="description" content="A neighborhood coffee bar serving slow-roasted beans and fresh pastries every morning.">
+  <!--
+    This is a starter VibeBridge site. It shows the editability conventions:
+      - data-cms-key on headings and paragraphs (use semantic dotted keys)
+      - one data-cms-section per section (groups slots in the editor)
+      - an image slot with data-cms-key + data-cms-type="image"
+      - a CTA link with data-cms-button
+      - a contact form with a relative action so leads reach your VibeBridge inbox
+
+    The hero image uses a RELATIVE path (assets/hero.svg). A placeholder ships in
+    ./assets so this example deploys cleanly. The CLI collects local images and
+    uploads them, so the path resolves on the live site. Swap in your own photo
+    (for example assets/hero.jpg) and update the src below. A missing file 404s.
+  -->
+  <style>
+    :root {
+      --accent: #d9663c;
+      --ink: #0a0a0a;
+      --muted: #71717a;
+      --line: #e4e4e7;
+      --canvas: #fafafa;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--canvas);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    header.site {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250, 250, 250, 0.85);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 15px;
+    }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      padding: 80px 0 64px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 16px;
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 20px;
+      max-width: 18ch;
+    }
+    .lede {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 56ch;
+      margin: 0 0 32px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      transition: transform 0.12s ease, background 0.12s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: #c4572f; }
+
+    .hero-media {
+      margin-top: 48px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      aspect-ratio: 16 / 9;
+      background: #efe7e2;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    section { padding: 64px 0; }
+    .section-title {
+      font-size: clamp(26px, 4vw, 34px);
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+    .section-intro {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 60ch;
+      margin: 0 0 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .card h3 {
+      font-size: 19px;
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .card p { color: var(--muted); margin: 0; font-size: 15px; }
+
+    .visit {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .hours p { margin: 4px 0; color: var(--muted); }
+    .hours strong { color: var(--ink); }
+
+    form { display: grid; gap: 16px; max-width: 420px; }
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    input, textarea {
+      width: 100%;
+      font: inherit;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--canvas);
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+      border-color: var(--accent);
+    }
+    button[type="submit"] {
+      justify-self: start;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      font: inherit;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.12s ease;
+    }
+    button[type="submit"]:hover { background: #c4572f; }
+
+    footer.site {
+      padding: 40px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .cards { grid-template-columns: 1fr; }
+      .visit-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero { padding: 56px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="/" data-cms-key="nav.brand">Northbeam Coffee</a>
+      <nav class="nav-links">
+        <a href="#menu" data-cms-key="nav.menu">Menu</a>
+        <a href="#visit" data-cms-key="nav.visit">Visit</a>
+        <a href="#contact" data-cms-key="nav.contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" data-cms-section="hero">
+      <div class="wrap">
+        <p class="eyebrow" data-cms-key="hero.eyebrow">Open daily from 7am</p>
+        <h1 data-cms-key="hero.headline">Slow-roasted coffee for your corner of the city.</h1>
+        <p class="lede" data-cms-key="hero.subline">
+          We roast in small batches and bake every pastry the morning you eat it.
+          Pull up a stool and stay a while.
+        </p>
+        <a class="btn" href="#contact" data-cms-button="hero.cta">Book a table</a>
+
+        <!-- Image slot. A placeholder ships in ./assets; swap in your own photo. -->
+        <div class="hero-media">
+          <img
+            data-cms-key="hero.image"
+            data-cms-type="image"
+            src="assets/hero.svg"
+            alt="Morning light over the Northbeam Coffee bar">
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" data-cms-section="menu">
+      <div class="wrap">
+        <h2 class="section-title" data-cms-key="menu.title">What we pour</h2>
+        <p class="section-intro" data-cms-key="menu.intro">
+          A short list, done well. Beans rotate with the season.
+        </p>
+        <div class="cards">
+          <div class="card">
+            <h3 data-cms-key="menu.item1.name">Filter</h3>
+            <p data-cms-key="menu.item1.desc">Single-origin, brewed by the cup. Bright and clean.</p>
+          </div>
+          <div class="card">
+            <h3 data-cms-key="menu.item2.name">Espresso</h3>
+            <p data-cms-key="menu.item2.desc">Our house blend. Deep, balanced, and never bitter.</p>
+          </div>
+          <div class="card">
+            <h3 data-cms-key="menu.item3.name">Pastries</h3>
+            <p data-cms-key="menu.item3.desc">Baked on site each morning. Ask what is fresh today.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="visit" data-cms-section="visit">
+      <div class="wrap visit-grid">
+        <div>
+          <h2 class="section-title" data-cms-key="visit.title">Come find us</h2>
+          <p class="section-intro" data-cms-key="visit.intro">
+            We are on the quiet end of the street, two doors past the bookshop.
+          </p>
+          <div class="hours">
+            <p data-cms-key="visit.address"><strong>14 Harbor Lane, Northbeam</strong></p>
+            <p data-cms-key="visit.weekdays">Monday to Friday, 7am to 5pm</p>
+            <p data-cms-key="visit.weekend">Saturday and Sunday, 8am to 4pm</p>
+          </div>
+        </div>
+        <div id="contact">
+          <h2 class="section-title" data-cms-key="contact.title">Say hello</h2>
+          <p class="section-intro" data-cms-key="contact.intro">
+            Booking a table or planning an event? Send a note and we will reply the same day.
+          </p>
+          <!--
+            Relative action keeps lead capture inside VibeBridge.
+            Do not point this at an external URL or the lead will not reach your inbox.
+          -->
+          <form action="?form=contact" method="post" data-vbb-form="contact">
+            <div>
+              <label for="name" data-cms-key="contact.label.name">Your name</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+            <div>
+              <label for="email" data-cms-key="contact.label.email">Email</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+            <div>
+              <label for="message" data-cms-key="contact.label.message">Message</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" data-cms-key="contact.submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site" data-cms-section="footer">
+    <div class="wrap footer-row">
+      <span data-cms-key="footer.copyright">Northbeam Coffee</span>
+      <span data-cms-key="footer.note">Roasted and brewed in the neighborhood.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

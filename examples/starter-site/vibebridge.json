@@ -1,0 +1,7 @@
+{
+  "site": "your-site-slug",
+  "endpoint": "https://app.vibebridge.ai",
+  "pages": [
+    { "file": "index.html", "slug": "home", "label": "Home", "path": "/", "sortOrder": 0 }
+  ]
+}
