@@ -57,8 +57,8 @@ changed.
 See `reference/publishing.md` for full detail. The fast path uses the CLI:
 
 ```bash
-npx vibebridge check     # local lint, plus server validation if a key is set
-npx vibebridge deploy    # uploads pages and publishes the site live
+npx vibebridge-cli check     # local lint, plus server validation if a key is set
+npx vibebridge-cli deploy    # uploads pages and publishes the site live
 ```
 
 Run `check` first and fix any flagged forms or missing images. Then `deploy` uploads each page

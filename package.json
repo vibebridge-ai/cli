@@ -1,11 +1,12 @@
 {
-  "name": "vibebridge",
-  "version": "0.1.0",
+  "name": "vibebridge-cli",
+  "version": "0.1.1",
   "description": "The official VibeBridge CLI. Push a finished, AI-built HTML site live on VibeBridge and make every text and image editable by the owner.",
   "type": "module",
   "bin": {
     "vibebridge": "bin/vibebridge.mjs",
-    "vbb": "bin/vibebridge.mjs"
+    "vbb": "bin/vibebridge.mjs",
+    "vibebridge-cli": "bin/vibebridge.mjs"
   },
   "engines": {
     "node": ">=18"

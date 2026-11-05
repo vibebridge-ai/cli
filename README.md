@@ -4,7 +4,7 @@
 
 Get your AI website online and editable in minutes.
 
-[![npm version](https://img.shields.io/npm/v/vibebridge.svg)](https://www.npmjs.com/package/vibebridge)
+[![npm version](https://img.shields.io/npm/v/vibebridge-cli.svg)](https://www.npmjs.com/package/vibebridge-cli)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 ## What is this
@@ -21,8 +21,8 @@ VibeBridge is the post-build layer. It handles hosting, content editing, forms a
 export VIBEBRIDGE_API_KEY="vbb_live_..."
 
 # 3. From your finished site folder:
-npx vibebridge init
-npx vibebridge deploy
+npx vibebridge-cli init
+npx vibebridge-cli deploy
 ```
 
 `init` scaffolds a `vibebridge.json` from the HTML files in the folder. `deploy` uploads every page, then publishes the site live and prints the live URL.
